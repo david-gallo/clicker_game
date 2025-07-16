@@ -1,0 +1,19 @@
+[{ 
+"nombre": "Mejora 1",
+"precio": 25 ,
+"descripcion":"más puntos por clic", 
+"cantidad": 1 
+},	
+{ 
+"nombre": 
+"Mejora 2", "precio": 100,
+"descripcion":"ayudante que te da puntos",
+"cantidad": 0 
+},
+{
+"nombre": "Mejora 3", 
+"precio": 500, 
+"descripcion":"aumenta la velocidad de tu ayudante", 
+"cantidad": 1 
+}
+]
