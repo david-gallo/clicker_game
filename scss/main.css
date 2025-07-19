@@ -237,4 +237,127 @@ footer {
      -moz-user-select: none;
           user-select: none;
   z-index: 9999;
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(6, auto);
+  }
+  .boton_click {
+    padding: 2rem;
+  }
+  .boton_click .boton {
+    height: 25rem;
+    width: 25rem;
+    font-size: 1.5rem;
+  }
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .cards .card_mejora {
+    width: 80%;
+    height: auto;
+    margin: 1rem 0;
+  }
+}
+@media (max-width: 768px) {
+  .bloqueo-scroll {
+    overflow: scroll;
+    height: 100vh;
+    margin: 0px;
+  }
+  .grid {
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(6, auto);
+  }
+  .boton_click {
+    padding: 1rem;
+  }
+  .boton_click .boton {
+    height: 20rem;
+    width: 20rem;
+    font-size: 1.5rem;
+  }
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .cards .card_mejora {
+    width: 90%;
+    height: auto;
+    margin: 1rem 0;
+  }
+}
+@media (max-width: 480px) {
+  .bloqueo-scroll {
+    overflow-x: hidden;
+    height: 100vh;
+    margin: 0px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, auto);
+  }
+  .menu_inicio {
+    padding: 20px;
+  }
+  .menu_inicio .menu_card {
+    padding: 40px 20px;
+    max-width: 100%;
+  }
+  .menu_inicio__titulo {
+    font-size: 40px;
+  }
+  .menu_inicio__lista {
+    gap: 15px;
+  }
+  .menu_inicio__opcion {
+    font-size: 24px;
+  }
+  .boton_click {
+    padding: 0.5rem;
+  }
+  .boton_click .boton {
+    height: 15rem;
+    width: 15rem;
+    font-size: 1.2rem;
+  }
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .cards .card_mejora {
+    width: 95%;
+    height: auto;
+    margin: 0.5rem 0;
+  }
+}
+@media (max-width: 360px) {
+  .bloqueo-scroll {
+    overflow-x: hidden;
+    height: 100vh;
+    margin: 0px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, auto);
+  }
+  .menu_inicio {
+    padding: 10px;
+  }
+  .menu_inicio .menu_card {
+    padding: 30px 15px;
+    max-width: 100%;
+  }
+  .menu_inicio__titulo {
+    font-size: 30px;
+  }
+  .menu_inicio__lista {
+    gap: 10px;
+  }
+  .menu_inicio__opcion {
+    font-size: 20px;
+  }
 }/*# sourceMappingURL=main.css.map */
