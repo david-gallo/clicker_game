@@ -61,15 +61,6 @@ header p {
   margin: 0;
   transition: color 0.3s ease;
 }
-.boton_click .boton:hover {
-  background: linear-gradient(135deg, #ff0000, #d10000);
-  box-shadow: 0 12px 25px rgba(255, 0, 0, 0.85);
-  transform: scale(1.05);
-}
-.boton_click .boton:active {
-  transform: translateY(3px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-}
 
 .cards {
   grid-area: 5/1/6/6;
@@ -234,4 +225,16 @@ footer {
   display: inline-block;
   opacity: 0;
   transform: translateY(50px);
+}
+
+.punto-flotante {
+  position: absolute;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 1.2rem;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  z-index: 9999;
 }/*# sourceMappingURL=main.css.map */

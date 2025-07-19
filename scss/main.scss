@@ -2,6 +2,7 @@
   overflow: hidden;
   height: 100vh;
   margin: 0px;
+  
 }
 
 .grid {
@@ -61,17 +62,6 @@ header {
       color: #fff;
       margin: 0;
       transition: color 0.3s ease;
-    }
-
-    &:hover {
-      background: linear-gradient(135deg, #ff0000, #d10000);
-      box-shadow: 0 12px 25px rgba(255, 0, 0, 0.85);
-      transform: scale(1.05);
-    }
-
-    &:active {
-      transform: translateY(3px);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     }
   }
 }
@@ -250,4 +240,14 @@ footer {
     opacity: 0;
     transform: translateY(50px);
   }
+}
+
+.punto-flotante {
+  position: absolute;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 1.2rem;
+  pointer-events: none;
+  user-select: none;
+  z-index: 9999;
 }

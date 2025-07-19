@@ -7,24 +7,42 @@ let mejoras = []
 const puntosTexto = document.querySelector("#puntos");
 //=====================================================//
 // Cargar mejoras desde el archivo JSON
-fetch("mejoras.json")
-  .then(response => {
-    if (!response.ok) throw new Error("No se pudo cargar el archivo mejoras.json");
-    return response.json();
-  })
-
-  .then(data => {
-    mejoras = data.map(mejora => ({
-      nombre: mejora.nombre,
-      precio: mejora.precio,
-      descripcion: mejora.descripcion,
-      cantidad: mejora.cantidad || 0
+async function cargarMejoras() {
+  try {
+    const response = await fetch("mejoras.json");
+    if (!response.ok) throw new Error("No se pudo cargar mejoras.json");
+    const data = await response.json();
+    mejoras = data.map(m => ({
+      nombre: m.nombre,
+      precio: m.precio,
+      descripcion: m.descripcion,
+      cantidad: m.cantidad || 0,
     }));
-  })
-   .catch(error => {
+
+  
+    if (localStorage.getItem("mejoras")) {
+      const mejorasLS = JSON.parse(localStorage.getItem("mejoras"));
+ 
+      mejoras = mejoras.map((m, i) => ({
+        ...m,
+        cantidad: mejorasLS[i]?.cantidad ?? m.cantidad,
+        precio: mejorasLS[i]?.precio ?? m.precio,
+      }));
+    }
+    puntos = parseInt(localStorage.getItem("puntos")) || puntos;
+    nivel = parseInt(localStorage.getItem("nivel")) || nivel;
+    velocidadAyudantes = parseInt(localStorage.getItem("velocidadAyudantes")) || velocidadAyudantes;
+
+    renderizarCards();
+    puntosTexto.innerText = "puntos totales: " + puntos;
+    if (mejoras[1].cantidad > 0) iniciarAyudante();
+
+  } catch (error) {
     console.error("Error al cargar mejoras:", error);
-   });
-    
+  }
+}
+
+cargarMejoras();
 
 //=====================================================//
 // Mostrar mensajes flotantes
@@ -38,15 +56,25 @@ function mostrarMensaje(id = "mensaje", texto = "No tienes suficientes puntos") 
     mensaje.classList.remove("mensaje-activo");
   }, 3000);
 }
-//=====================================================//
-// Click manual para sumar puntos
-const boton = document.querySelector("#boton");
-boton.addEventListener("click", sumarpuntos);
 
-function sumarpuntos() {
-    puntos += nivel;
-    puntosTexto.innerText = "puntos totales: " + puntos;
-}
+//=====================================================//
+//animacion botón
+const boton = document.querySelector("#boton");
+
+boton.addEventListener("click", () => {
+  anime({
+    targets: boton,
+    scale: [
+      { value: 1.2, duration: 150, easing: 'easeOutQuad' },
+      { value: 1, duration: 150, easing: 'easeInQuad' }    
+    ],
+    rotate: [
+      { value: 15, duration: 150, easing: 'easeOutQuad' },
+      { value: 0, duration: 150, easing: 'easeInQuad' }
+    ]
+  });
+
+});
 //=====================================================//
 // Mejora 1: Más puntos por clic
 const mejora1 = document.querySelector("#card_mejora1");
@@ -261,3 +289,46 @@ opcionesMenu.forEach(opcion => {
   });
 });
 
+// ================== ANIMACIÓN DE "+1" ==================
+
+function animarPunto(cantidad = 1) {
+  const punto = document.createElement("span");
+  punto.className = "punto-flotante";
+  punto.innerText = `+${cantidad}`;
+
+  const rect = boton.getBoundingClientRect();
+  punto.style.left = rect.left + rect.width / 2 + (Math.random() * 190 - 90) + "px";
+  punto.style.top = rect.top + rect.height / 2 + (Math.random() * 30) + window.scrollY + "px";
+
+  document.body.appendChild(punto);
+
+  anime({
+    targets: punto,
+    translateY: -60,
+    scale: [2, 0.8],
+    opacity: [1, 0],
+    duration: 1200,
+    easing: "easeOutCubic",
+    complete: () => punto.remove(),
+  });
+}
+
+let comboClicks = 0;
+let comboTimer;
+
+boton.addEventListener("click", () => {
+  comboClicks++;
+
+  animarPunto(nivel);
+
+  clearTimeout(comboTimer);
+  comboTimer = setTimeout(() => {
+
+    const puntosGanados = nivel * comboClicks;
+    puntos += puntosGanados;
+    puntosTexto.innerText = "puntos totales: " + puntos;
+    comboClicks = 0;
+    guardarProgreso();
+  }, 300);
+});
+//=====================================================//
