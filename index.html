@@ -1,81 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clicer BY:david</title>
-    <link rel="stylesheet" href="scss/main.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clicker BY: david</title>
+  <link rel="stylesheet" href="/scss/main.css" />
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="script.js" type="module"></script>
 </head>
-
-<!-- incersion de scripi JavaScript -->
-<script src="script.js" type="module"></script>
-<!-- boton -->
 <body class="bloqueo-scroll">
+  <!-- Menú de inicio -->
   <section class="menu_inicio">
-  <div class="menu_card">
-    <h1 class="menu_inicio__titulo" data-splitting>Clicker</h1>
-
-    <ul class="menu_inicio__lista">
-      <li class="menu_inicio__opcion" data-splitting>inicio</li>
-      <li class="menu_inicio__opcion" data-splitting id="reset">nueva partida</li>
-      <li class="menu_inicio__opcion" data-splitting>tutorial</li>
-    </ul>
-
-    <h6 class="menu_inicio__footer" data-splitting>BY: david</h6>
-  </div>
-</section>
-       
-    </section>
-    <div class="grid oculto">
-        <article class="boton_click">
-        <button class="boton" id="boton">
-            click
-        </button>
-        <p class="puntos" id="puntos">puntos totales: 0 </p>
-        </article>
-<!-- cards mejors -->
-        <article class="cards">
-            <section class="card_mejora" id="card_mejora1">
-                <p>MAS PODER DE CLICKS</p>
-                <p> agrega +1 a tus clicks</p>
-                <p>precio: 25 puntos</p> 
-                <p>nivel 1</p>
-               </section>
-               
-           
-            <section class="card_mejora" id="card_mejora2">
-                <p>UN AMIGITO TE AYUDARA</p>
-                <p> agrega +1 tu puntaje automaticamente</p>
-                <p>precio: 100 puntos</p> 
-                <p>nivel 0</p>
-            </section>
-
-                <section class="card_mejora" id="card_mejora3">
-                <p> + VELOCIDAD DE AYUDANTE</p>
-                <p> clicks mas rapidos del ayudante</p>
-                <p>precio: 500 puntos</p> 
-                <p>nivel 1</p>
-                  <p>velocidad de ayudante: 1000 ms</p>
-               </section>
-               
-            </card>
-
-             <p  id="mensaje" class="mensaje">no tienes suficientes puntos, CLICKE    A MAS!!</p>
-         
-        </article>
-        <article>
-           <article id="modal-reset" class="modal">
-            <div class="modal-contenido">
-                <p>¿Estás seguro de que querés reiniciar tu progreso?</p>
-                <button id="confirmar-reset">Sí, reiniciar</button>
-                <button id="cancelar-reset">Cancelar</button>
-            </div>
-        </article>      
-
+    <div class="menu_card">
+      <h1 class="menu_inicio__titulo" data-splitting>Clicker</h1>
+      <ul class="menu_inicio__lista">
+        <li class="menu_inicio__opcion" data-splitting id="inicio">inicio</li>
+        <li class="menu_inicio__opcion" data-splitting id="reset">nueva partida</li>
+        <li class="menu_inicio__opcion" data-splitting id="tutorial">tutorial</li>
+      </ul>
+      <h6 class="menu_inicio__footer" data-splitting>BY: david</h6>
     </div>
-     <!-- incersion de scripi JavaScript -->
-<script src="script.js" type="module"></script>
-<script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  </section>
+
+  <!-- Área de juego -->
+  <div class="grid oculto">
+    <!-- Botón de click -->
+    <article class="boton_click">
+      <button class="boton" id="boton">click</button>
+    </article>
+
+    <!-- Puntos totales -->
+    
+
+    <!-- Estadísticas -->
+   
+    <button id="btnestadisticas" class="btn-estadisticas">📊 Mostrar estadísticas</button>
+   <article class="stats-card" id="statsCard" aria-label="Estadísticas del juego">
+
+  <header class="stats-header">
+    <h2> 📊Estadísticas</h2>
+  </header>
+
+  <section class="stats-body">
+    <p>
+      <label for="totalPoints">Puntos Totales:</label>
+      <output id="totalPoints">0</output>
+    </p>
+    <p>
+      <label for="manualCPS">CPS (manual):</label>
+      <output id="manualCPS">0</output>
+    </p>
+    <p>
+      <label for="autoCPS">CPS (auto):</label>
+      <output id="autoCPS">0</output>
+    </p>
+    <p class="total">
+      <label for="totalCPS">Total CPS:</label>
+      <output id="totalCPS">0</output>
+    </p>
+  </section>
+</article>
+
+    <!-- Cards de mejoras -->
+    <article class="cards">
+      <section class="card_mejora" id="card_mejora1"><!-- contenido dinámico --></section>
+      <section class="card_mejora" id="card_mejora2"><!-- contenido dinámico --></section>
+      <section class="card_mejora" id="card_mejora3"><!-- contenido dinámico --></section>
+      <p id="mensaje" class="mensaje">no tienes suficientes puntos, ¡clickea más!</p>
+    </article>
+
+    <!-- Modal de confirmación de reset -->
+    <article id="modal-reset" class="modal">
+      <div class="modal-contenido">
+        <p>¿Estás seguro de que querés reiniciar tu progreso?</p>
+        <button id="confirmar-reset">Sí, reiniciar</button>
+        <button id="cancelar-reset">Cancelar</button>
+      </div>
+    </article>
+  </div>
+
+  <!-- Scripts -->
+
 </body>
 </html>
